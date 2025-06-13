@@ -33,6 +33,7 @@
       </tr>
     </tbody>
   </table>
+
 </div>
 
 <!-- Add and edit Modal -->
@@ -45,11 +46,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeModalBtn"></button>
         </div>
         <div class="modal-body row g-3">
-
-           <!-- <div class="col-md-6">
-            <label>id</label>
-            <input formControlName="id" class="form-control" />
-          </div> -->
 
           <div class="col-md-6">
             <label>First Name</label>
@@ -121,53 +117,7 @@
 </div>
 
 
-<!-- ?Register modal  -->
-<!-- Register Modal -->
-<!-- <div class="modal fade" id="registerModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-        <div class="modal-header">
-          <h5 class="modal-title">Register Employee</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeRegisterModalBtn"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label>Email</label>
-            <input type="email" formControlName="email" class="form-control" />
-          </div>
-
-          <div class="mb-3">
-            <label>Password</label>
-            <input type="password" formControlName="password" class="form-control" />
-          </div>
-
-
-          <div class="mb-3">
-            <label>Role</label>
-            <select class="form-select" formControlName="role">
-              <option value="EMPLOYEE">EMPLOYEE</option>
-              <option value="HR">HR</option>
-              <option value="SENIOR_HR">SENIOR_HR</option>
-              <option value="MANAGER">MANAGER</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label>Profile Picture</label><br/>
-            <input type="file" (change)="onFileChange($event)" accept="image/png, image/jpeg, image/jpg" />
-           </div>
-        </div>
-
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Register</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
+<!-- Register Employee Modal -->
 
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -200,7 +150,7 @@
               style="position: absolute; top: 38px; right: 15px; cursor: pointer; color: #6c757d;"
             ></i>
           </div>
-          
+
           <div class="mb-3">
             <label class="form-label">Role</label>
             <select class="form-select" formControlName="role">

@@ -13,7 +13,9 @@ export class AddEmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  // ✅ Get JWT headers
+
+
+
   private getHeaders(contentType: string = ''): HttpHeaders {
     const token = localStorage.getItem('token') || '';
     const headersConfig: any = { Authorization: `Bearer ${token}` };
@@ -27,8 +29,12 @@ export class AddEmployeeService {
 
   //! ✅ Get all employees
   getEmployees(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl, { headers: this.getHeaders() });
-  }
+  return this.http.get<any[]>(this.apiUrl, {
+    headers: this.getHeaders(), // no problem with extra headers
+    responseType: 'json' as const
+  });
+}
+
   //! ✅ Add new employee
   addEmployeeWithImage(formData: FormData): Observable<any> {
     return this.http.post(this.apiUrl, formData, {
@@ -42,6 +48,13 @@ export class AddEmployeeService {
       headers: this.getHeaders(''), // 👈 No Content-Type
     });
   }
+
+//   updateEmployeeWithImage(id: number, formData: FormData): Observable<any> {
+//   return this.http.put<any>(
+//     `http://localhost:8080/api/employees/${id}`,
+//     formData
+//   );
+// }
 
   // ✅ Delete employee
   deleteEmployee(id: number): Observable<any> {

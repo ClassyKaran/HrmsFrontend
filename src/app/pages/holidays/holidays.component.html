@@ -1,0 +1,94 @@
+<div class="container py-4">
+  <!-- Header & Create Button -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold text-primary mb-0">Holiday Management</h3>
+    <button class="btn btn-outline-primary rounded-pill px-4" (click)="openModal()">
+      <i class="bi bi-calendar-plus me-2"></i> Create Holiday
+    </button>
+  </div>
+
+  <!-- Alert Messages -->
+  <div *ngIf="successMessage" class="alert alert-success shadow-sm rounded">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger shadow-sm rounded">{{ errorMessage }}</div>
+
+  <!-- Table -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0 text-center">
+          <thead class="table-primary text-dark">
+            <tr>
+              <th>#</th>
+              <th>Holiday</th>
+              <th>Date</th>
+              <th>Day</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let holiday of holidays; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td class="fw-semibold text-capitalize">{{ holiday.name }}</td>
+              <td>{{ holiday.date }}</td>
+              <td><span class="badge bg-info-subtle text-dark">{{ getDayName(holiday.date) }}</span></td>
+              <td>{{ holiday.description }}</td>
+              <td>
+                <button class="btn btn-sm btn-danger rounded-pill px-3" (click)="onDelete(holiday.id)">
+                  <i class="bi bi-trash-fill"></i> Delete
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="holidays.length === 0">
+              <td colspan="6" class="text-muted py-3">No holidays available.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="holidayModal" tabindex="-1" aria-labelledby="holidayModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow-lg rounded-4">
+      <form [formGroup]="holidayForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header bg-primary text-white rounded-top-4">
+          <h5 class="modal-title" id="holidayModalLabel">
+            <i class="bi bi-calendar-plus me-2"></i> Create New Holiday
+          </h5>
+          <button type="button" class="btn-close btn-close-white" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label fw-semibold">Holiday Name</label>
+              <input type="text" id="name" class="form-control rounded-pill" formControlName="name" required />
+            </div>
+            <div class="col-md-6">
+              <label for="date" class="form-label fw-semibold">Date</label>
+              <input type="date" id="date" class="form-control rounded-pill" formControlName="date" required />
+            </div>
+            <div class="col-12">
+              <label for="description" class="form-label fw-semibold">Description</label>
+              <textarea
+                id="description"
+                class="form-control rounded-4"
+                rows="3"
+                formControlName="description"
+                placeholder="Optional"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-light rounded-bottom-4">
+          <button type="button" class="btn btn-outline-secondary rounded-pill px-4" (click)="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-success rounded-pill px-4">
+            <i class="bi bi-check-circle me-1"></i> Create Holiday
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

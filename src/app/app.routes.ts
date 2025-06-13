@@ -33,6 +33,7 @@ import { ManagerGenerateSalaryComponent } from './pages/manager-generate-salary/
 import { SeniorhrGenerateSalaryComponent } from './pages/seniorhr-generate-salary/seniorhr-generate-salary.component';
 import { LeavesStatusComponent } from './pages/leaves-status/leaves-status.component';
 import { AllLeaveRequestComponent } from './pages/all-leave-request/all-leave-request.component';
+import { HolidaysComponent } from './pages/holidays/holidays.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -83,6 +84,8 @@ export const routes: Routes = [
       { path: 'hr-engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'hr-generate-salary', component: HrGenerateSalaryComponent, canActivate: [AuthGuard] },
       { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
+      { path: 'manage-holidays', component: HolidaysComponent, canActivate: [AuthGuard] },
+
     ]
   },
 

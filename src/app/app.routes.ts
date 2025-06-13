@@ -33,7 +33,12 @@ import { ManagerGenerateSalaryComponent } from './pages/manager-generate-salary/
 import { SeniorhrGenerateSalaryComponent } from './pages/seniorhr-generate-salary/seniorhr-generate-salary.component';
 import { LeavesStatusComponent } from './pages/leaves-status/leaves-status.component';
 import { AllLeaveRequestComponent } from './pages/all-leave-request/all-leave-request.component';
-import { HolidaysComponent } from './pages/holidays/holidays.component';
+import { ManagerPeopleComponent } from './pages/manager-people/manager-people.component';
+import { ManagerHelpdeskComponent } from './pages/manager-helpdesk/manager-helpdesk.component';
+import { ManagerReviewComponent } from './pages/manager-review/manager-review.component';
+import { ManagerKudosComponent } from './pages/manager-kudos/manager-kudos.component';
+import { ManagerFeedbackComponent } from './pages/manager-feedback/manager-feedback.component';
+import { ManagerTaskComponent } from './pages/manager-task/manager-task.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -57,6 +62,12 @@ export const routes: Routes = [
       { path: 'manager-add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
       { path: 'manager-all-user', component: AllUserComponent, canActivate: [AuthGuard] },
       { path: 'manager-generated-salary', component: ManagerGenerateSalaryComponent, canActivate: [AuthGuard] },
+      { path: 'people', component: ManagerPeopleComponent, canActivate: [AuthGuard] },
+      { path: 'helpdesk', component: ManagerHelpdeskComponent, canActivate: [AuthGuard] },
+      { path: 'My Worklife/kudos', component: ManagerKudosComponent, canActivate: [AuthGuard] },
+      { path: 'todo/review', component: ManagerReviewComponent, canActivate: [AuthGuard] },
+      { path: 'My Worklife/feedback', component: ManagerFeedbackComponent, canActivate: [AuthGuard] },
+      { path: 'todo/tasks', component: ManagerTaskComponent, canActivate: [AuthGuard] },
     ]
   },
 
@@ -84,8 +95,6 @@ export const routes: Routes = [
       { path: 'hr-engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'hr-generate-salary', component: HrGenerateSalaryComponent, canActivate: [AuthGuard] },
       { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
-      { path: 'manage-holidays', component: HolidaysComponent, canActivate: [AuthGuard] },
-
     ]
   },
 

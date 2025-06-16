@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <h3 class="mb-3">Employee Management</h3>
-  <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#employeeModal">
+  <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#employeeModal" (click)="resetForm()">
     + Add Employee
   </button>
 
@@ -25,40 +25,132 @@
         <td>{{ emp.role }}</td>
         <td>{{ emp.status }}</td>
         <td>
-          <button class="btn btn-sm btn-outline-success me-1" (click)="edit(emp)">Edit</button>
-          <button class="btn btn-sm btn-outline-primary me-1" (click)="openRegisterModal(emp)">Register</button>
+
+          <button class="btn  btn-sm btn-outline-success me-1" (click)="openEditModal(emp)">Edit</button>
+
+          <!-- <button class="btn btn-sm btn-outline-primary me-1">Register</button> -->
+
+          <!-- Register Button -->
+          <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#registerModal"
+            (click)="openRegisterModal(emp)">Register
+          </button>
 
           <button class="btn btn-sm btn-outline-danger" (click)="delete(emp.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-
 </div>
 
-<!-- emp Add Modal -->
+<!-- Add employee modal  -->
 <div class="modal fade" id="employeeModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form  (ngSubmit)="onSubmit()">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
         <div class="modal-header">
-          <h5 class="modal-title"> Employee</h5>
+          <h5 class="modal-title">Add Employee</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeModalBtn"></button>
         </div>
-        <div class="modal-body row g-3">
 
+        <div class="modal-body row g-3">
+          <div class="col-md-6">
+            <label for="firstName">First Name</label>
+            <input id="firstName" formControlName="firstName" class="form-control" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" formControlName="lastName" class="form-control" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="phone">Phone</label>
+            <input id="phone" formControlName="phone" class="form-control" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="department">Department</label>
+            <input id="department" formControlName="department" class="form-control" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="jobTitle">Job Title</label>
+            <input id="jobTitle" formControlName="jobTitle" class="form-control" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="role">Role</label>
+            <select class="form-select" id="role" formControlName="role">
+              <option value="USER">USER</option>
+              <option value="HR">HR</option>
+              <option value="SENIOR_HR">SENIOR_HR</option>
+              <option value="MANAGER">MANAGER</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label for="status">Status</label>
+            <select class="form-select" id="status" formControlName="status">
+              <option value="Active">Active</option>
+              <option value="On Notice">On Notice</option>
+              <option value="Resigned">Resigned</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label for="joiningDate">Joining Date</label>
+            <input type="date" id="joiningDate" class="form-control" formControlName="joiningDate" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="exitDate">Exit Date</label>
+            <input type="date" id="exitDate" class="form-control" formControlName="exitDate" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="profilePicture">Profile Picture</label>
+            <input type="file" id="profilePicture" (change)="onFileChange($event)"
+              accept="image/png, image/jpeg, image/jpg" />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit employee modal  -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" id="closeEditModalBtn"></button>
+        </div>
+
+        <div class="modal-body row g-3">
           <div class="col-md-6">
             <label>First Name</label>
             <input formControlName="firstName" class="form-control" />
           </div>
-
           <div class="col-md-6">
             <label>Last Name</label>
             <input formControlName="lastName" class="form-control" />
           </div>
           <div class="col-md-6">
             <label>Email</label>
-            <input type="email" formControlName="email" class="form-control" />
+            <input formControlName="email" type="email" class="form-control" />
           </div>
           <div class="col-md-6">
             <label>Phone</label>
@@ -74,7 +166,7 @@
           </div>
           <div class="col-md-6">
             <label>Role</label>
-            <select class="form-select" formControlName="role">
+            <select formControlName="role" class="form-select">
               <option value="USER">USER</option>
               <option value="HR">HR</option>
               <option value="SENIOR_HR">SENIOR_HR</option>
@@ -83,7 +175,7 @@
           </div>
           <div class="col-md-6">
             <label>Status</label>
-            <select class="form-select" formControlName="status">
+            <select formControlName="status" class="form-select">
               <option value="Active">Active</option>
               <option value="On Notice">On Notice</option>
               <option value="Resigned">Resigned</option>
@@ -91,24 +183,16 @@
           </div>
           <div class="col-md-6">
             <label>Joining Date</label>
-            <input type="date" class="form-control" formControlName="joiningDate" />
+            <input type="date" formControlName="joiningDate" class="form-control" />
           </div>
           <div class="col-md-6">
             <label>Exit Date</label>
-            <input type="date" class="form-control" formControlName="exitDate" />
+            <input type="date" formControlName="exitDate" class="form-control" />
           </div>
-
-
-          <div class="col-md-6">
-            <label>Profile Picture</label>
-            <input type="file" (change)="onFileChange($event)" accept="image/png, image/jpeg, image/jpg" />
-
-          </div>
-
-
         </div>
+
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success"></button>
+          <button type="submit" class="btn btn-primary">Update</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -116,9 +200,7 @@
   </div>
 </div>
 
-
 <!-- Register Employee Modal -->
-
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -176,4 +258,3 @@
     </div>
   </div>
 </div>
-

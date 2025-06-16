@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AddEmployeeService } from '../../../services/add-employee.service';
-
+import { ToastrService } from 'ngx-toastr';
 declare var bootstrap: any;
 
 @Component({
@@ -24,6 +24,7 @@ export class AddEmployeeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private toastr: ToastrService,
     private addEmployeeService: AddEmployeeService
   ) {}
 
@@ -57,7 +58,6 @@ export class AddEmployeeComponent implements OnInit {
   getEmployees() {
     this.addEmployeeService.getEmployees().subscribe({
       next: (res) => {
-        console.log('✔️ Employees fetched:', res);
         this.employees = res;
       },
       error: (err) => {
@@ -73,39 +73,42 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
+  // ✅ Add or Update Employee in one method
   onSubmit() {
     const formData = new FormData();
     const employeeData = { ...this.employeeForm.value };
-    formData.append('employeeData', JSON.stringify(employeeData));
-    if (this.selectedImage) {
-      formData.append('image', this.selectedImage);
+
+    if (!employeeData.exitDate) {
+      employeeData.exitDate = null;
     }
 
-    if (this.isEdit && this.selectedEmployeeId) {
-      this.addEmployeeService.updateEmployeeWithImage(this.selectedEmployeeId, formData).subscribe({
-        next: () => {
-          console.log('✅ Employee updated');
-          this.getEmployees();
-          this.resetForm();
-          (document.getElementById('closeModalBtn') as HTMLElement).click();
-        },
-        error: (err) => {
-          console.error('❌ Update Error:', err);
-        }
-      });
-    } else {
-      this.addEmployeeService.addEmployeeWithImage(formData).subscribe({
-        next: () => {
-          console.log('✅ Employee added');
-          this.getEmployees();
-          this.resetForm();
-          (document.getElementById('closeModalBtn') as HTMLElement).click();
-        },
-        error: (err) => {
-          console.error('❌ Add Error:', err);
-        }
-      });
+    // 👇 Backend expects 'employee' (not employeeData)
+    formData.append(
+      'employee',
+      new Blob([JSON.stringify(employeeData)], { type: 'application/json' })
+    );
+
+    if (this.selectedImage) {
+      formData.append('profilePicture', this.selectedImage);
     }
+
+    const request$ = this.isEdit && this.selectedEmployeeId
+      ? this.addEmployeeService.updateEmployeeWithImage(this.selectedEmployeeId, formData)
+      : this.addEmployeeService.addEmployeeWithImage(formData);
+
+    request$.subscribe({
+      next: () => {
+        const msg = this.isEdit ? 'updated' : 'added';
+        this.toastr.success(`Employee ${msg} successfully!`, 'Success');
+        this.getEmployees();
+       
+        (document.getElementById('closeModalBtn') as HTMLElement)?.click();
+      },
+      error: (err) => {
+        console.error(`❌ ${this.isEdit ? 'Update' : 'Add'} Error:`, err);
+        this.toastr.error(`${this.isEdit ? 'Update' : 'Add'} failed!`, 'Error');
+      }
+    });
   }
 
   edit(emp: any) {
@@ -116,24 +119,20 @@ export class AddEmployeeComponent implements OnInit {
     });
     this.isEdit = true;
     this.selectedEmployeeId = emp.id;
+    this.selectedImage = null;
     new bootstrap.Modal(document.getElementById('employeeModal')!).show();
   }
 
   delete(id: number) {
     if (confirm('Are you sure you want to delete?')) {
       this.addEmployeeService.deleteEmployee(id).subscribe(() => {
-        console.log('🗑️ Employee deleted');
         this.getEmployees();
+        this.toastr.success('Employee deleted successfully!');
       });
     }
   }
 
-  resetForm() {
-    this.employeeForm.reset();
-    this.isEdit = false;
-    this.selectedEmployeeId = null;
-    this.selectedImage = null;
-  }
+
 
   openRegisterModal(emp: any) {
     this.selectedEmployeeId = emp.id;
@@ -165,8 +164,8 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     this.addEmployeeService.registerEmployee(formData).subscribe(() => {
-      alert('✅ Employee registered successfully!');
-      (document.getElementById('closeRegisterModalBtn') as HTMLElement).click();
+      this.toastr.success('✅ Employee registered successfully!');
+      (document.getElementById('closeRegisterModalBtn') as HTMLElement)?.click();
       this.selectedImage = null;
     });
   }
@@ -175,3 +174,89 @@ export class AddEmployeeComponent implements OnInit {
     return emp.id;
   }
 }
+
+
+
+
+//add emp working edit faill
+  // onSubmit() {
+  //   const formData = new FormData();
+  //   const employeeData = { ...this.employeeForm.value };
+
+  //   formData.append('employeeData', JSON.stringify(employeeData));
+  //   if (this.selectedImage) {
+  //     formData.append('image', this.selectedImage);
+  //   }
+
+  //   if (this.isEdit && this.selectedEmployeeId) {
+  //     this.addEmployeeService.updateEmployeeWithImage(this.selectedEmployeeId, formData).subscribe({
+  //       next: () => {
+  //         console.log('✅ Employee updated');
+  //         this.getEmployees();
+  //         this.resetForm();
+  //         (document.getElementById('closeModalBtn') as HTMLElement).click();
+  //       },
+  //       error: (err) => {
+  //         console.error('❌ Update Error:', err);
+  //       }
+  //     });
+  //   } else {
+  //     this.addEmployeeService.addEmployeeWithImage(formData).subscribe({
+  //       next: () => {
+  //         console.log('✅ Employee added');
+  //         this.toastr.success('Employee updated successfully!', 'Success');
+  //         this.getEmployees();
+  //         this.resetForm();
+  //         (document.getElementById('closeModalBtn') as HTMLElement).click();
+  //       },
+  //       error: (err) => {
+  //         console.error('❌ Add Error:', err);
+  //       }
+  //     });
+  //   }
+  // }
+
+
+//! =========================================================
+
+// edit working but adding not working
+
+// onSubmit() {
+//  const formData = new FormData();
+// const employeeData = { ...this.employeeForm.value };
+
+// // 👇 Handle empty exitDate properly
+// if (!employeeData.exitDate) {
+//   employeeData.exitDate = null;
+// }
+
+// // 👇 Append without filename for proper backend parsing
+// formData.append(
+//   'employee',
+//   new Blob([JSON.stringify(employeeData)], { type: 'application/json' })
+// );
+
+// if (this.selectedImage) {
+//   formData.append('profilePicture', this.selectedImage);
+// }
+
+//   if (this.isEdit && this.selectedEmployeeId) {
+//     this.addEmployeeService.updateEmployeeWithImage(this.selectedEmployeeId, formData).subscribe({
+//       next: () => {
+//         // console.log('✅ Employee updated successfully');
+//         this.toastr.success('Employee updated successfully!', 'Success');
+//         this.getEmployees();
+//         this.resetForm();
+//         (document.getElementById('closeModalBtn') as HTMLElement).click();
+//       },
+//       error: (err) => {
+//         console.error('❌ Update Error:', err);
+//       }
+//     });
+
+
+
+//   }
+// }
+
+

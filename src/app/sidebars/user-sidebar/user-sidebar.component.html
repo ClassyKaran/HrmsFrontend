@@ -53,7 +53,7 @@
       
 
       <li>
-        <a class="menu-item" routerLink="/engage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="menu-item" routerLink="user/engage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <i class="material-icons">chat</i>
           <span class="menu-label" *ngIf="isExpanded()">Engage</span>
         </a>
@@ -68,11 +68,11 @@
         </div>
         <ul class="submenu" *ngIf="isSubmenuExpanded('My Worklife') && isExpanded()">
           <li>
-            <a class="submenu-label mx-4 px-4" routerLink="/my-worklife/kudo" routerLinkActive="active"
+            <a class="submenu-label mx-4 px-4" routerLink="user/my-worklife/kudo" routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }">Kudos</a>
           </li>
           <li>
-            <a class="submenu-label mx-4 px-4" routerLink="/my-worklife/feedback" routerLinkActive="active"
+            <a class="submenu-label mx-4 px-4" routerLink="user/my-worklife/feedback" routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }">feedback</a>
           </li>
         </ul>
@@ -87,8 +87,8 @@
             [class.rotated]="isSubmenuExpanded('To Do')">expand_more</i>
         </div>
         <ul class="submenu" *ngIf="isSubmenuExpanded('To Do') && isExpanded()">
-          <li><a class="submenu-label mx-4 px-4" routerLink="/to-do/task" routerLinkActive="active">Tasks</a></li>
-          <li><a class="submenu-label mx-4 px-4" routerLink="/todo/review" routerLinkActive="active">Review</a></li>
+          <li><a class="submenu-label mx-4 px-4" routerLink="user/to-do/task" routerLinkActive="active">Tasks</a></li>
+          <li><a class="submenu-label mx-4 px-4" routerLink="user/to-do/review" routerLinkActive="active">Review</a></li>
         </ul>
       </li>
       <!-- Salary -->
@@ -101,8 +101,8 @@
       [class.rotated]="isSubmenuExpanded('Attendance')">expand_more</i>
   </div>
   <ul class="submenu" *ngIf="isSubmenuExpanded('Attendance') && isExpanded()">
-    <li><a class="submenu-label mx-4 px-4" routerLink="/attendance/mark" routerLinkActive="active">Mark Attendance</a></li>
-    <li><a class="submenu-label mx-4 px-4" routerLink="/attendance/report" routerLinkActive="active">Attendance Report</a></li>
+    <li><a class="submenu-label mx-4 px-4" routerLink="user/attendance/mark" routerLinkActive="active">Mark Attendance</a></li>
+    <li><a class="submenu-label mx-4 px-4" routerLink="user/attendance/report" routerLinkActive="active">Attendance Report</a></li>
   </ul>
 </li>
 <!-- Leaves -->
@@ -113,8 +113,8 @@
     <i class="material-icons submenu-icon" *ngIf="isExpanded()"
       [class.rotated]="isSubmenuExpanded('Leaves')">expand_more</i>
   </div>
-  <li><a class="submenu-label mx-4 px-4" routerLink="leaves/apply-leaves" routerLinkActive="active">Apply Leave</a></li>
-  <li><a class="submenu-label mx-4 px-4" routerLink="leaves/leaves-status" routerLinkActive="active">Leave Status</a></li>
+  <li><a class="submenu-label mx-4 px-4" routerLink="user/leaves/apply-leaves" routerLinkActive="active">Apply Leave</a></li>
+  <li><a class="submenu-label mx-4 px-4" routerLink="user/leaves/leaves-status" routerLinkActive="active">Leave Status</a></li>
 
 
 <li>
@@ -125,7 +125,7 @@
       [class.rotated]="isSubmenuExpanded('Salary')">expand_more</i>
   </div>
   <ul class="submenu" *ngIf="isSubmenuExpanded('Salary') && isExpanded()">
-    <li><a class="submenu-label mx-4 px-4" routerLink="/pay-slip" routerLinkActive="active">Pay Slip</a></li>
+    <li><a class="submenu-label mx-4 px-4" routerLink="user/pay-slip" routerLinkActive="active">Pay Slip</a></li>
     
   </ul>
 </li>
@@ -134,19 +134,19 @@
       <!-- Add other menu items similarly below (Salary, Leave, Attendance, etc.) -->
 
       <li>
-        <a class="menu-item" routerLink="/user-document-centre" routerLinkActive="active">
+        <a class="menu-item" routerLink="user/document-centre" routerLinkActive="active">
           <i class="material-icons">folder</i>
           <span class="menu-label" *ngIf="isExpanded()">Documents Center</span>
         </a>
       </li>
       <li>
-        <a class="menu-item" routerLink="/user-people" routerLinkActive="active">
+        <a class="menu-item" routerLink="user/people" routerLinkActive="active">
           <i class="material-icons">people</i>
           <span class="menu-label" *ngIf="isExpanded()">People</span>
         </a>
       </li>
       <li>
-        <a class="menu-item" routerLink="/Helpdesk" routerLinkActive="active">
+        <a class="menu-item" routerLink="user/Helpdesk" routerLinkActive="active">
           <i class="material-icons">help</i>
           <span class="menu-label" *ngIf="isExpanded()">Helpdesk</span>
         </a>

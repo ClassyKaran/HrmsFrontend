@@ -10,9 +10,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './hr-document-centre.component.css'
 })
 export class HrDocumentCentreComponent {
-
-
-
   documents = [
     { icon: '📄', title: 'Documents', link: '/documents' },
     { icon: '💰', title: 'Payslips', link: '/payslips' },

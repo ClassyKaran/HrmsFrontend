@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-feedback',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './user-feedback.component.html',
   styleUrl: './user-feedback.component.css'
 })

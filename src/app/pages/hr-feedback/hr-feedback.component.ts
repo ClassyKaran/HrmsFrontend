@@ -4,13 +4,13 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-manager-feedback',
+  selector: 'app-hr-feedback',
   standalone: true,
   imports: [FormsModule, CommonModule, ReactiveFormsModule, HttpClientModule],
-  templateUrl: './manager-feedback.component.html',
-  styleUrl: './manager-feedback.component.css'
+  templateUrl: './hr-feedback.component.html',
+  styleUrl: './hr-feedback.component.css'
 })
-export class ManagerFeedbackComponent {
+export class HrFeedbackComponent {
   activeTab: string = 'Received';
  
   tabs: string[] = ['Received', 'Given', 'Pending Requests', 'Drafts'];

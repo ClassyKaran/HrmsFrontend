@@ -39,8 +39,6 @@ import { ManagerReviewComponent } from './pages/manager-review/manager-review.co
 import { ManagerKudosComponent } from './pages/manager-kudos/manager-kudos.component';
 import { ManagerFeedbackComponent } from './pages/manager-feedback/manager-feedback.component';
 import { ManagerTaskComponent } from './pages/manager-task/manager-task.component';
-import { HolidaysComponent } from './pages/holidays/holidays.component';
-import { ManageEmployeeComponent } from './pages/manage-employee/manage-employee.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -60,7 +58,7 @@ export const routes: Routes = [
     component: ManagerLayoutComponent,
     children: [
       { path: 'manager-home', component: ManagerHomeComponent, canActivate: [AuthGuard] },
-      { path: 'manager-engage', component: EngageComponent, canActivate: [AuthGuard] },
+      { path: 'manager/engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'manager-add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
       { path: 'manager-all-user', component: AllUserComponent, canActivate: [AuthGuard] },
       { path: 'manager-generated-salary', component: ManagerGenerateSalaryComponent, canActivate: [AuthGuard] },
@@ -70,8 +68,6 @@ export const routes: Routes = [
       { path: 'todo/review', component: ManagerReviewComponent, canActivate: [AuthGuard] },
       { path: 'My Worklife/feedback', component: ManagerFeedbackComponent, canActivate: [AuthGuard] },
       { path: 'todo/tasks', component: ManagerTaskComponent, canActivate: [AuthGuard] },
-      { path: 'manageemployee', component: ManageEmployeeComponent, canActivate: [AuthGuard] },
-
     ]
   },
 
@@ -96,11 +92,9 @@ export const routes: Routes = [
       { path: 'hr-home', component: HrHomeComponent, canActivate: [AuthGuard] },
       { path: 'hr-add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
       { path: 'hr-all-user', component: AllUserComponent, canActivate: [AuthGuard] },
-      { path: 'hr-engage', component: EngageComponent, canActivate: [AuthGuard] },
+      { path: 'hr/engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'hr-generate-salary', component: HrGenerateSalaryComponent, canActivate: [AuthGuard] },
       { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
-      { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
-
     ]
   },
 
@@ -110,18 +104,19 @@ export const routes: Routes = [
     component: UserLayoutComponent,
     children: [
       { path: 'user-home', component: UserHomeComponent, canActivate: [AuthGuard] },
-      { path: 'pay-slip', component: PayslipComponent, canActivate: [AuthGuard] },
-      { path: 'user-document-centre', component: UserDocumentCenterComponent, canActivate: [AuthGuard] },
-      { path: 'user-people', component: UserPeopleComponent, canActivate: [AuthGuard] },
-      { path: 'my-worklife/kudo', component: KudoComponent, canActivate: [AuthGuard] },
-      { path: 'to-do/task', component: TaskComponent, canActivate: [AuthGuard] },
-      { path: 'engage', component: EngageComponent, canActivate: [AuthGuard] },
-      { path: 'Helpdesk', component: HelpdeskComponent, canActivate: [AuthGuard] },
+      { path: 'user/pay-slip', component: PayslipComponent, canActivate: [AuthGuard] },
+      { path: 'user/document-centre', component: UserDocumentCenterComponent, canActivate: [AuthGuard] },
+      { path: 'user/people', component: UserPeopleComponent, canActivate: [AuthGuard] },
+      { path: 'user/my-worklife/kudo', component: KudoComponent, canActivate: [AuthGuard] },
+      { path: 'user/to-do/task', component: TaskComponent, canActivate: [AuthGuard] },
+      { path: 'user/to-do/review', component: TaskComponent, canActivate: [AuthGuard] },
+      { path: 'user/engage', component: EngageComponent, canActivate: [AuthGuard] },
+      { path: 'user/Helpdesk', component: HelpdeskComponent, canActivate: [AuthGuard] },
       { path: 'Workflow Delegates/request-hub', component: RequestHubComponent, canActivate: [AuthGuard] },
       { path: 'my-worklife/feedback', component: UserFeedbackComponent, canActivate: [AuthGuard] },
       { path: 'leaves/apply-leaves', component: ApplyLeavesComponent, canActivate: [AuthGuard] },
       { path: 'leaves/apply-leaves', component: ApplyLeavesComponent, canActivate: [AuthGuard] },
-      { path: 'manage-holiday', component: HolidaysComponent, canActivate: [AuthGuard] },
+      { path: 'leaves/leaves-status', component: LeavesStatusComponent, canActivate: [AuthGuard] },
     ]
   },
 

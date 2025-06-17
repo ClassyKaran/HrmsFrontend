@@ -68,7 +68,7 @@
       </li>
 
       <li>
-        <a class="menu-item" routerLink="/manager-engage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="menu-item" routerLink="manager/engage" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <i class="material-icons">chat</i>
           <span class="menu-label" *ngIf="isExpanded()">Engage</span>
         </a>
@@ -89,11 +89,11 @@
         </div>
         <ul class="submenu" *ngIf="isSubmenuExpanded('My Worklife') && isExpanded()">
           <li>
-            <a class="submenu-label mx-4 px-4" routerLink="/My Worklife/kudos" routerLinkActive="active"
+            <a class="submenu-label mx-4 px-4" routerLink="manager/MyWorklife/kudos" routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }">Kudos</a>
           </li>
           <li>
-            <a class="submenu-label mx-4 px-4" routerLink="/My Worklife/feedback" routerLinkActive="active"
+            <a class="submenu-label mx-4 px-4" routerLink="manager/MyWorklife/feedback" routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }">feedback</a>
           </li>
         </ul>
@@ -108,27 +108,27 @@
             [class.rotated]="isSubmenuExpanded('To Do')">expand_more</i>
         </div>
         <ul class="submenu" *ngIf="isSubmenuExpanded('To Do') && isExpanded()">
-          <li><a class="submenu-label mx-4 px-4" routerLink="/todo/tasks" routerLinkActive="active">Tasks</a></li>
-          <li><a class="submenu-label mx-4 px-4" routerLink="/todo/review" routerLinkActive="active">Review</a></li>
+          <li><a class="submenu-label mx-4 px-4" routerLink="manager/todo/tasks" routerLinkActive="active">Tasks</a></li>
+          <li><a class="submenu-label mx-4 px-4" routerLink="manager/todo/review" routerLinkActive="active">Review</a></li>
         </ul>
       </li>
 
       <!-- Add other menu items similarly below (Salary, Leave, Attendance, etc.) -->
 
       <li>
-        <a class="menu-item" routerLink="/document-centre" routerLinkActive="active">
+        <a class="menu-item" routerLink="manager/document-centre" routerLinkActive="active">
           <i class="material-icons">folder</i>
           <span class="menu-label" *ngIf="isExpanded()">Documents Center</span>
         </a>
       </li>
       <li>
-        <a class="menu-item" routerLink="/people" routerLinkActive="active">
+        <a class="menu-item" routerLink="manager/people" routerLinkActive="active">
           <i class="material-icons">people</i>
           <span class="menu-label" *ngIf="isExpanded()">People</span>
         </a>
       </li>
       <li>
-        <a class="menu-item" routerLink="/helpdesk" routerLinkActive="active">
+        <a class="menu-item" routerLink="manager/helpdesk" routerLinkActive="active">
           <i class="material-icons">help</i>
           <span class="menu-label" *ngIf="isExpanded()">Helpdesk</span>
         </a>

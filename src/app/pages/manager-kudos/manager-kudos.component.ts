@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './manager-kudos.component.css'
 })
 export class ManagerKudosComponent {
+  selectedTab: any;
+
 
 }

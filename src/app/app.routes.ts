@@ -39,6 +39,8 @@ import { ManagerReviewComponent } from './pages/manager-review/manager-review.co
 import { ManagerKudosComponent } from './pages/manager-kudos/manager-kudos.component';
 import { ManagerFeedbackComponent } from './pages/manager-feedback/manager-feedback.component';
 import { ManagerTaskComponent } from './pages/manager-task/manager-task.component';
+import { HolidaysComponent } from './pages/holidays/holidays.component';
+import { ManageEmployeeComponent } from './pages/manage-employee/manage-employee.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -68,6 +70,8 @@ export const routes: Routes = [
       { path: 'todo/review', component: ManagerReviewComponent, canActivate: [AuthGuard] },
       { path: 'My Worklife/feedback', component: ManagerFeedbackComponent, canActivate: [AuthGuard] },
       { path: 'todo/tasks', component: ManagerTaskComponent, canActivate: [AuthGuard] },
+      { path: 'manageemployee', component: ManageEmployeeComponent, canActivate: [AuthGuard] },
+
     ]
   },
 
@@ -95,6 +99,8 @@ export const routes: Routes = [
       { path: 'hr-engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'hr-generate-salary', component: HrGenerateSalaryComponent, canActivate: [AuthGuard] },
       { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
+      { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
+
     ]
   },
 
@@ -115,7 +121,7 @@ export const routes: Routes = [
       { path: 'my-worklife/feedback', component: UserFeedbackComponent, canActivate: [AuthGuard] },
       { path: 'leaves/apply-leaves', component: ApplyLeavesComponent, canActivate: [AuthGuard] },
       { path: 'leaves/apply-leaves', component: ApplyLeavesComponent, canActivate: [AuthGuard] },
-      { path: 'leaves/leaves-status', component: LeavesStatusComponent, canActivate: [AuthGuard] },
+      { path: 'manage-holiday', component: HolidaysComponent, canActivate: [AuthGuard] },
     ]
   },
 

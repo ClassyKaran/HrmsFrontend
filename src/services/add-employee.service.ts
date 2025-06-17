@@ -49,6 +49,8 @@ export class AddEmployeeService {
     });
   }
 
+
+
 //   updateEmployeeWithImage(id: number, formData: FormData): Observable<any> {
 //   return this.http.put<any>(
 //     `http://localhost:8080/api/employees/${id}`,

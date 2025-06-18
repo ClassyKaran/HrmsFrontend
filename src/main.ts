@@ -9,8 +9,7 @@ import { importProvidersFrom } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-// 👇 Toastr import
-import { ToastrModule } from 'ngx-toastr';
+
 
 bootstrapApplication(AppComponent, {
   providers: [

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2>📆 Calendar Management</h2>
+
+  <form (ngSubmit)="submit()" class="mb-4">
+    <div class="row g-2 align-items-end">
+      <div class="col-md-3">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-control" [(ngModel)]="newDay.date" name="date" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Is Working Day</label>
+        <select class="form-select" [(ngModel)]="newDay.workingDay" name="workingDay">
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Remarks</label>
+        <input type="text" class="form-control" [(ngModel)]="newDay.remarks" name="remarks">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">
+          {{ isEditMode ? 'Update' : 'Add' }}
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Date</th>
+        <th>Working Day</th>
+        <th>Remarks</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let day of days">
+        <td>{{ day.date }}</td>
+        <td>{{ day.workingDay ? 'Yes' : 'No' }}</td>
+        <td>{{ day.remarks }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="edit(day)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

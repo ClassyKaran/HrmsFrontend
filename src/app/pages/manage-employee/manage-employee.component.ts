@@ -244,7 +244,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AddEmployeeService } from '../../../services/add-employee.service';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 declare var bootstrap: any;
 
@@ -269,7 +269,7 @@ export class ManageEmployeeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private toastr: ToastrService,
+    // private toastr: ToastrService,
     private http: HttpClient,
     private addEmployeeService: AddEmployeeService
   ) {}
@@ -344,14 +344,14 @@ export class ManageEmployeeComponent implements OnInit {
 
     this.addEmployeeService.addEmployeeWithImage(formData).subscribe({
       next: () => {
-        this.toastr.success('Employee added successfully!');
+        // this.toastr.success('Employee added successfully!');
         (document.getElementById('closeModalBtn') as HTMLElement)?.click();
         this.employeeForm.reset();
         this.selectedFile = null;
         this.getEmployees();
       },
       error: (err) => {
-        this.toastr.error('Error while submitting employee data.');
+        // this.toastr.error('Error while submitting employee data.');
         console.error(err);
       },
     });
@@ -393,12 +393,12 @@ export class ManageEmployeeComponent implements OnInit {
       .updateEmployeeWithImage(this.selectedEmployeeId, this.editForm.value)
       .subscribe({
         next: () => {
-          this.toastr.success('Employee updated successfully!');
+          // this.toastr.success('Employee updated successfully!');
           (document.getElementById('closeEditModalBtn') as HTMLElement)?.click();
           this.getEmployees();
         },
         error: (err) => {
-          this.toastr.error('Update failed!');
+          // this.toastr.error('Update failed!');
           console.error(err);
         },
       });
@@ -445,13 +445,13 @@ export class ManageEmployeeComponent implements OnInit {
 
     this.addEmployeeService.registerEmployee(formData).subscribe({
       next: () => {
-        this.toastr.success('✅ Employee registered successfully!');
+        // this.toastr.success('✅ Employee registered successfully!');
         (document.getElementById('closeRegisterModalBtn') as HTMLElement)?.click();
         this.selectedImage = null;
         this.getEmployees();
       },
       error: (err) => {
-        this.toastr.error('❌ Registration failed!');
+        // this.toastr.error('❌ Registration failed!');
         console.error(err);
       },
     });
@@ -463,7 +463,7 @@ export class ManageEmployeeComponent implements OnInit {
     if (confirm('Are you sure you want to delete?')) {
       this.addEmployeeService.deleteEmployee(id).subscribe(() => {
         this.getEmployees();
-        this.toastr.success('Employee deleted successfully!');
+        // this.toastr.success('Employee deleted successfully!');
       });
     }
   }

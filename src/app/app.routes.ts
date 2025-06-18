@@ -38,7 +38,6 @@ import { ManagerReviewComponent } from './pages/manager-review/manager-review.co
 import { ManagerKudosComponent } from './pages/manager-kudos/manager-kudos.component';
 import { ManagerFeedbackComponent } from './pages/manager-feedback/manager-feedback.component';
 import { ManagerTaskComponent } from './pages/manager-task/manager-task.component';
-import { ManageEmployeeComponent } from './pages/manage-employee/manage-employee.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -107,6 +106,7 @@ export const routes: Routes = [
     component: UserLayoutComponent,
     children: [
       { path: 'user-home', component: UserHomeComponent, canActivate: [AuthGuard] },
+      { path: 'calender', component: CalenderComponent, canActivate: [AuthGuard] },
       { path: 'user/pay-slip', component: PayslipComponent, canActivate: [AuthGuard] },
       { path: 'user/document-centre', component: UserDocumentCenterComponent, canActivate: [AuthGuard] },
       { path: 'user/people', component: UserPeopleComponent, canActivate: [AuthGuard] },

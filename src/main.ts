@@ -1,3 +1,4 @@
+
 import { FormsModule } from '@angular/forms';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
@@ -9,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 // 👇 Toastr import
+import { ToastrModule } from 'ngx-toastr';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -19,7 +21,7 @@ bootstrapApplication(AppComponent, {
     FormsModule,
     HttpClientModule,
 
-    
+
     )
   ]
 });

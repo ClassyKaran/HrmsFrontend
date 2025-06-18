@@ -39,7 +39,6 @@ import { ManagerReviewComponent } from './pages/manager-review/manager-review.co
 import { ManagerKudosComponent } from './pages/manager-kudos/manager-kudos.component';
 import { ManagerFeedbackComponent } from './pages/manager-feedback/manager-feedback.component';
 import { ManagerTaskComponent } from './pages/manager-task/manager-task.component';
-import { CalenderComponent } from './pages/calender/calender.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -60,7 +59,7 @@ export const routes: Routes = [
     children: [
       { path: 'manager-home', component: ManagerHomeComponent, canActivate: [AuthGuard] },
       { path: 'manager/engage', component: EngageComponent, canActivate: [AuthGuard] },
-      { path: 'manager-add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'manager-manage-employee', component: ManageEmployeeComponent, canActivate: [AuthGuard] },
       { path: 'manager-all-user', component: AllUserComponent, canActivate: [AuthGuard] },
       { path: 'manager-generated-salary', component: ManagerGenerateSalaryComponent, canActivate: [AuthGuard] },
       { path: 'people', component: ManagerPeopleComponent, canActivate: [AuthGuard] },
@@ -78,10 +77,12 @@ export const routes: Routes = [
     component: SeniorHrLayoutComponent,
     children: [
       { path: 'senior-hr-home', component: SeniorHrHomeComponent, canActivate: [AuthGuard] },
-      { path: 'senior-hr-add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'senior-hr-manage-employee', component: ManageEmployeeComponent, canActivate: [AuthGuard] },
       { path: 'senior-hr-all-user', component: AllUserComponent, canActivate: [AuthGuard] },
       { path: 'senior-hr-engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'senior-generated-salary', component:SeniorhrGenerateSalaryComponent, canActivate: [AuthGuard] },
+
+
     ]
   },
 
@@ -91,11 +92,12 @@ export const routes: Routes = [
     component: HrLayoutComponent,
     children: [
       { path: 'hr-home', component: HrHomeComponent, canActivate: [AuthGuard] },
-      { path: 'hr-add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
+      { path: 'hr-manage-employee', component: ManageEmployeeComponent, canActivate: [AuthGuard] },
       { path: 'hr-all-user', component: AllUserComponent, canActivate: [AuthGuard] },
       { path: 'hr/engage', component: EngageComponent, canActivate: [AuthGuard] },
       { path: 'hr-generate-salary', component: HrGenerateSalaryComponent, canActivate: [AuthGuard] },
       { path: 'all-leave-request', component: AllLeaveRequestComponent, canActivate: [AuthGuard] },
+
     ]
   },
 

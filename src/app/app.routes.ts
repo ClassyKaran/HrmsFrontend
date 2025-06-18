@@ -9,7 +9,6 @@ import { AuthGuard } from '../guards/auth.guard';
 import { ManagerLayoutComponent } from './layout/manager-layout/manager-layout.component';
 
 import { EngageComponent } from './pages/engage/engage.component';
-import { AddEmployeeComponent } from './pages/add-employee/add-employee.component';
 import { AllUserComponent } from './pages/all-user/all-user.component';
 import { UserLayoutComponent } from './layout/user-layout/user-layout.component';
 import { HrLayoutComponent } from './layout/hr-layout/hr-layout.component';
